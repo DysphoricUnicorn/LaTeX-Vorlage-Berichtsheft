@@ -1,21 +1,23 @@
-\newcommand{\Titelzeile}[3]{
+\newcommand{\Titelzeile}[5]{
 \centering
 \begin{tabularx}{\textwidth}{lrX}
-\multirow{4}{10cm}{\includegraphics{Bilder/IHK.jpg}}
-	& Name: & \Name \\\cline{3-3}
-    & Abteilung: & \Abteilung \\\cline{3-3}
+\multirow{4}{10cm}{\includegraphics{Bilder/IHK.png}}
+	& Name und Vorname: & \Name \\\cline{3-3}
+    & Ausbildungsabteilung: & \Abteilung \\\cline{3-3}
     & Monat: & #1 \\\cline{3-3}
     & Ausbildungsjahr: & #2 \\\cline{3-3}
     \hline
 \end{tabularx}
 
 \begin{flushleft}
-\huge Ausbildungsnachweis Nr. \underline #3
+\huge Ausbildungsnachweis Nr. \underline{#3} von #4 bis #5
 \end{flushleft}
 }
 
 \newcommand{\Unterschrift}{
-\vspace{\fill}
+\begin{flushleft}
+Unterschriften
+\end{flushleft}
 \begin{tabularx}{\textwidth}{|p{0.001cm} X p{0.001cm} p{6.3cm} p{0.001cm}|p{0.001cm} X p{0.001cm} p{6.3cm} p{0.001cm}|}
 \hline
 & & & & & & & & & \\
@@ -28,7 +30,7 @@
 \begin{center}
 \begin{tabularx}{\textwidth}{|p{2cm}|X|}
 \hline
-\textbf Wochen & \textbf Tätigkeit und Stoff der Unterweisung\\
+\textbf Tag & \textbf Art der ausgeführten Ausbildungsarbeit:\\
 \hline
 #1
 \end{tabularx}
@@ -39,4 +41,49 @@
 #1. Woche &
 #2\\
 \hline
+}
+
+\newcommand{\Tag}[2]{
+\switch
+        \case{1 = 1} Montag & #2\\ \hline%
+        \case{{2}} Dienstag & #2\\ \hline%
+        \case{{3}} Mittwoch & #2\\ \hline%
+        \case{{4}} Donnerstag & #2\\ \hline%
+        \case{{5}} Freitag & #2\\ \hline%
+        \case{{6}} Samstag & #2\\ \hline%
+        \case{{7}} Sonntag & #2\\ \hline%
+        \otherwise Error & #2\\ \hline%
+\endswitch
+%#1 & #2\\
+\hline
+}
+
+\newcommand{\Unterweisung}[1]{
+\begin{center}
+\begin{tabularx}{\textwidth}{|l X|}
+\hline
+Unterweisung:\\
+\hline
+#1\\
+\hline
+\end{tabularx}
+\end{center}
+}
+
+\newcommand{\Bemerkung}{
+\vspace{\fill}
+\begin{flushleft}
+Bemerkungen des Ausbilders
+\end{flushleft}
+\begin{center}
+\begin{tabularx}{\textwidth}{|l X|}
+\hline
+{\scriptsize Bemerkungen über ausgeführte Ausbildungsarbeiten, Zwischenprüfungen, Ausbildungslehrgänge, Ausbildungsnachweise usw.
+}\\
+\\
+\\
+\\
+\hline
+\end{tabularx}
+\end{center}
 }
