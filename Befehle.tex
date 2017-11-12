@@ -10,7 +10,7 @@
 \end{tabularx}
 
 \begin{flushleft}
-\huge Ausbildungsnachweis Nr. \underline{#3} von #4 bis #5
+\huge Ausbildungsnachweis Nr. \underline{#3}, Kalenderwoche \underline{#4#5}
 \end{flushleft}
 }
 
@@ -18,22 +18,31 @@
 \begin{flushleft}
 Unterschriften
 \end{flushleft}
-\begin{tabularx}{\textwidth}{|p{0.001cm} X p{0.001cm} p{6.3cm} p{0.001cm}|p{0.001cm} X p{0.001cm} p{6.3cm} p{0.001cm}|}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l l l|}
 \hline
-& & & & & & & & & \\
-& & & & & & & & & \\\cline{2-2} \cline{4-4} \cline{7-7} \cline{9-9}
-& Datum & & Unterschrift des/der Auszubildenden und ggfs. des/der gesetzlichen/r Vertreters/in & & & Datum & & Unterschrift des/der Ausbildenden bzw. Ausbilders/in &\\
-\hline
-\end{tabularx}}
+\thead{Für die Richtigkeit aller\\Angaben} & \thead{Für die Richtigkeit aller Angaben über\\die betriebliche Ausbildung} & \thead{Gesehen:}\\
+ & & \\
+ \underline{\phantom{Für die Richtigkeit aller}} & \underline{\phantom{Für die Richtigkeit aller Angaben über}} & \underline{\phantom{Für die Richtigkeit aller Angaben über}} \\ 
+\thead{Auszubildender\\Unterschrift und Datum} & \thead{Ausbilder\\Unterschrift und Datum} & \thead{Gesetzlicher Vertreter\\Unterschrift und Datum}\\\hline
+\end{tabular}
+}
+}
 
-\newcommand{\Monat}[1]{
+
+\newcommand\tabrotate[1]{\begin{turn}{90}\rlap{#1}\end{turn}}
+
+\newcommand{\Monat}[2]{
 \begin{center}
-\begin{tabularx}{\textwidth}{|p{2cm}|X|}
-\hline
-\textbf Tag & \textbf Art der ausgeführten Ausbildungsarbeit:\\
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|l|c|l|}
+\multicolumn{1}{l}{\textbf{Tag}} & \multicolumn{1}{l}{\textbf{Art der ausgeführten Ausbildungsarbeit, Berufsschule}}  & \multicolumn{1}{l}{\textbf{\thead{Einzel-\\stunden}}}  & \multicolumn{1}{l}{\textbf{\thead{Beginn und Ende der\\
+Täglichen Ausbildungszeit}}} \\
 \hline
 #1
-\end{tabularx}
+\multicolumn{2}{l|}{} & #2 & Gesamtstunden\\\cline{3-4}
+\end{tabular}
+}
 \end{center}
 }
 
@@ -43,31 +52,19 @@ Unterschriften
 \hline
 }
 
-\newcommand{\Tag}[2]{
+\newcommand{\Tag}[5]{
     \switch[{#1}]
-        \case{=1}Montag & #2\\%
-        \case{=2}Dienstag & #2\\%
-        \case{=3}Mittwoch & #2\\%
-        \case{=4}Donnerstag & #2\\%
-        \case{=5}Freitag & #2\\%
-        \case{=6}Samstag & #2\\%
-        \case{=7}Sonntag & #2\\%
-        \otherwise Error & #2\\%
+        \case{=1} Montag & \makecell[l]{#2} & \makecell[c]{\thead{#3}} & \makecell[l]{Beginn:\\#4 Uhr\\\\Ende:\\#5 Uhr}\\[7ex]%
+        \case{=2}Dienstag & \makecell[l]{#2} & \makecell[c]{\thead{#3}} & \makecell[l]{Beginn:\\#4 Uhr\\\\Ende:\\#5 Uhr}\\[7ex]%
+        \case{=3}Mittwoch & \makecell[l]{#2} & \makecell[c]{\thead{#3}} & \makecell[l]{Beginn:\\#4 Uhr\\\\Ende:\\#5 Uhr}\\[7ex]%
+        \case{=4}Donnerstag & \makecell[l]{#2} & \makecell[c]{\thead{#3}} & \makecell[l]{Beginn:\\#4 Uhr\\\\Ende:\\#5 Uhr}\\[7ex]%
+        \case{=5}Freitag & \makecell[l]{#2} & \makecell[c]{\thead{#3}} & \makecell[l]{Beginn:\\#4 Uhr\\\\Ende:\\#5 Uhr}\\[7ex]%
+        \case{=6}Samstag & \makecell[l]{#2} & \makecell[c]{#3} & \makecell[l]{Beginn:\\#4 Uhr\\\\Ende:\\#5 Uhr}\\[7ex]%
+        \case{=7}Sonntag & \makecell[l]{#2} & \makecell[c]{#3} & \makecell[l]{Beginn:\\#4 Uhr\\\\Ende:\\#5 Uhr}\\[7ex]%
+        \otherwise Error & \makecell[l]{#2} & \makecell[c]{#3} & \makecell[l]{Beginn:\\#4 Uhr\\\\Ende:\\#5 Uhr}\\[7ex]%
     \endswitch
 %#1 & #2\\
 \hline
-}
-
-\newcommand{\Unterweisung}[1]{
-\begin{center}
-\begin{tabularx}{\textwidth}{|l X|}
-\hline
-Unterweisung:\\
-\hline
-#1\\
-\hline
-\end{tabularx}
-\end{center}
 }
 
 \newcommand{\Bemerkung}{
@@ -79,10 +76,10 @@ Bemerkungen des Ausbilders
 \begin{tabularx}{\textwidth}{|l X|}
 \hline
 {\scriptsize Bemerkungen über ausgeführte Ausbildungsarbeiten, Zwischenprüfungen, Ausbildungslehrgänge, Ausbildungsnachweise usw.
-}\\
-\\
-\\
-\\
+} & \\
+ & \\
+ & \\
+ & \\
 \hline
 \end{tabularx}
 \end{center}
